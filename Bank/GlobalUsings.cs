@@ -1,0 +1,9 @@
+﻿global using Confluent.Kafka;
+global using BuildingBlocks.Core.DomainObjects;
+global using BuildingBlocks.Core.EventBus;
+global using BuildingBlocks.Core.EventBus.Dispatcher;
+global using BuildingBlocks.Core.Helpers;
+global using Microsoft.EntityFrameworkCore;
+global using BuildingBlocks.Core;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Mvc;

@@ -1,0 +1,348 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\bank\\controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|solutionrelative:controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\bank\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|solutionrelative:controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4663679-43C7-4A42-BCA9-54F828C645D8}|..\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\buildingblocks\\core\\domainobjects\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\bank\\dtos\\paymentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|solutionrelative:dtos\\paymentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\bank\\producers\\transactionproducer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|solutionrelative:producers\\transactionproducer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\bank\\globalusings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|solutionrelative:globalusings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\bank\\controllers\\apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|solutionrelative:controllers\\apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\bank\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4663679-43C7-4A42-BCA9-54F828C645D8}|..\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\buildingblocks\\core\\globalusings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4663679-43C7-4A42-BCA9-54F828C645D8}|..\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\buildingblocks\\core\\eventbus\\dispatcher\\kafkadispatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4663679-43C7-4A42-BCA9-54F828C645D8}|..\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\buildingblocks\\core\\eventbus\\queuenames.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4663679-43C7-4A42-BCA9-54F828C645D8}|..\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\buildingblocks\\core\\domainobjects\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4663679-43C7-4A42-BCA9-54F828C645D8}|..\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\buildingblocks\\core\\domainobjects\\transactionevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4663679-43C7-4A42-BCA9-54F828C645D8}|..\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\buildingblocks\\buildingblocks.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4663679-43C7-4A42-BCA9-54F828C645D8}|..\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\buildingblocks\\core\\baseresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\bank\\apiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B0749C-EA00-48B4-A22A-81BAA88B4BD5}|Bank.csproj|solutionrelative:apiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4663679-43C7-4A42-BCA9-54F828C645D8}|..\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\buildingblocks\\core\\helpers\\jsondeserializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4663679-43C7-4A42-BCA9-54F828C645D8}|..\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\buildingblocks\\core\\interfaces\\iconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4663679-43C7-4A42-BCA9-54F828C645D8}|..\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\buildingblocks\\core\\helpers\\jsonserializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4663679-43C7-4A42-BCA9-54F828C645D8}|..\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\muril\\downloads\\paymentssimulator\\buildingblocks\\core\\services\\kafkaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GlobalUsings.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\GlobalUsings.cs",
+              "RelativeDocumentMoniker": "GlobalUsings.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\GlobalUsings.cs",
+              "RelativeToolTip": "GlobalUsings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T18:30:46.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TransactionProducer.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\Producers\\TransactionProducer.cs",
+              "RelativeDocumentMoniker": "Producers\\TransactionProducer.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\Producers\\TransactionProducer.cs",
+              "RelativeToolTip": "Producers\\TransactionProducer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T18:28:09.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PaymentRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\DTOs\\PaymentRequest.cs",
+              "RelativeDocumentMoniker": "DTOs\\PaymentRequest.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\DTOs\\PaymentRequest.cs",
+              "RelativeToolTip": "DTOs\\PaymentRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T18:19:24.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApiController.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\Controllers\\ApiController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ApiController.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\Controllers\\ApiController.cs",
+              "RelativeToolTip": "Controllers\\ApiController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T17:57:44.835Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccountsController.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\Controllers\\AccountsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountsController.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\Controllers\\AccountsController.cs",
+              "RelativeToolTip": "Controllers\\AccountsController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACAAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T16:57:59.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\DomainObjects\\Transaction.cs",
+              "RelativeDocumentMoniker": "..\\BuildingBlocks\\Core\\DomainObjects\\Transaction.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\DomainObjects\\Transaction.cs",
+              "RelativeToolTip": "..\\BuildingBlocks\\Core\\DomainObjects\\Transaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T16:48:59.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Account.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\DomainObjects\\Account.cs",
+              "RelativeDocumentMoniker": "..\\BuildingBlocks\\Core\\DomainObjects\\Account.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\DomainObjects\\Account.cs",
+              "RelativeToolTip": "..\\BuildingBlocks\\Core\\DomainObjects\\Account.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T16:56:46.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PaymentsController.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\Controllers\\PaymentsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PaymentsController.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\Controllers\\PaymentsController.cs",
+              "RelativeToolTip": "Controllers\\PaymentsController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAD8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T16:59:09.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "QueueNames.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\EventBus\\QueueNames.cs",
+              "RelativeDocumentMoniker": "..\\BuildingBlocks\\Core\\EventBus\\QueueNames.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\EventBus\\QueueNames.cs",
+              "RelativeToolTip": "..\\BuildingBlocks\\Core\\EventBus\\QueueNames.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T16:50:32.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GlobalUsings.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\GlobalUsings.cs",
+              "RelativeDocumentMoniker": "..\\BuildingBlocks\\Core\\GlobalUsings.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\GlobalUsings.cs",
+              "RelativeToolTip": "..\\BuildingBlocks\\Core\\GlobalUsings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T17:13:44.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T17:47:07.506Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TransactionEvent.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\DomainObjects\\TransactionEvent.cs",
+              "RelativeDocumentMoniker": "..\\BuildingBlocks\\Core\\DomainObjects\\TransactionEvent.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\DomainObjects\\TransactionEvent.cs",
+              "RelativeToolTip": "..\\BuildingBlocks\\Core\\DomainObjects\\TransactionEvent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T16:56:42.817Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "KafkaDispatcher.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\EventBus\\Dispatcher\\KafkaDispatcher.cs",
+              "RelativeDocumentMoniker": "..\\BuildingBlocks\\Core\\EventBus\\Dispatcher\\KafkaDispatcher.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\EventBus\\Dispatcher\\KafkaDispatcher.cs",
+              "RelativeToolTip": "..\\BuildingBlocks\\Core\\EventBus\\Dispatcher\\KafkaDispatcher.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T17:04:32.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "BuildingBlocks",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\BuildingBlocks.csproj",
+              "RelativeDocumentMoniker": "..\\BuildingBlocks\\BuildingBlocks.csproj",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\BuildingBlocks.csproj",
+              "RelativeToolTip": "..\\BuildingBlocks\\BuildingBlocks.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-24T16:48:43.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "BaseResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\BaseResponse.cs",
+              "RelativeDocumentMoniker": "..\\BuildingBlocks\\Core\\BaseResponse.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\BaseResponse.cs",
+              "RelativeToolTip": "..\\BuildingBlocks\\Core\\BaseResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T17:58:16.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ApiConfig.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\ApiConfig.cs",
+              "RelativeDocumentMoniker": "ApiConfig.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\Bank\\ApiConfig.cs",
+              "RelativeToolTip": "ApiConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T17:49:55.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "JsonDeserializer.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\Helpers\\JsonDeserializer.cs",
+              "RelativeDocumentMoniker": "..\\BuildingBlocks\\Core\\Helpers\\JsonDeserializer.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\Helpers\\JsonDeserializer.cs",
+              "RelativeToolTip": "..\\BuildingBlocks\\Core\\Helpers\\JsonDeserializer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T17:06:44.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\Interfaces\\IConsumer.cs",
+              "RelativeDocumentMoniker": "..\\BuildingBlocks\\Core\\Interfaces\\IConsumer.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\Interfaces\\IConsumer.cs",
+              "RelativeToolTip": "..\\BuildingBlocks\\Core\\Interfaces\\IConsumer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T17:06:01.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "JsonSerializer.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\Helpers\\JsonSerializer.cs",
+              "RelativeDocumentMoniker": "..\\BuildingBlocks\\Core\\Helpers\\JsonSerializer.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\Helpers\\JsonSerializer.cs",
+              "RelativeToolTip": "..\\BuildingBlocks\\Core\\Helpers\\JsonSerializer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T17:06:34.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "KafkaService.cs",
+              "DocumentMoniker": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\Services\\KafkaService.cs",
+              "RelativeDocumentMoniker": "..\\BuildingBlocks\\Core\\Services\\KafkaService.cs",
+              "ToolTip": "C:\\Users\\Muril\\Downloads\\PaymentsSimulator\\BuildingBlocks\\Core\\Services\\KafkaService.cs",
+              "RelativeToolTip": "..\\BuildingBlocks\\Core\\Services\\KafkaService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T17:09:20.515Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
