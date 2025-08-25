@@ -2,6 +2,7 @@
 using Bank.DTOs;
 using Bank.Producers;
 using BuildingBlocks.Core.DomainObjects;
+using BuildingBlocks.Core.EventBus.Events;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
@@ -57,7 +58,9 @@ namespace Bank.Controllers
             if (!response)
                 return CustomResponse((int)HttpStatusCode.BadRequest, false);
 
-            await _producer.ProduceNewPayment(newPayment);
+            var @event = new PaymentInitiatedEvent(newPayment.TransactionId, newPayment.Utr, newPayment.SenderAccount, newPayment.ReceiverAccount, newPayment.Amount, newPayment.Status, DateTime.Now);
+
+            await _producer.ProduceNewPayment(@event);
 
             return CustomResponse((int)HttpStatusCode.OK, true, newPayment);
         }

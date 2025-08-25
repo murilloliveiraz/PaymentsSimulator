@@ -1,12 +1,14 @@
-﻿namespace Bank.Producers
+﻿using BuildingBlocks.Core.EventBus.Events;
+
+namespace Bank.Producers
 {
     public class TransactionProducer
     {
-        public async Task ProduceNewPayment(Transaction transaction)
+        public async Task ProduceNewPayment(PaymentInitiatedEvent payment)
         {
-            using (var dispatcher = new KafkaDispatcher<string, Transaction>(Serializers.Utf8, new JsonSerializer<Transaction>()))
+            using (var dispatcher = new KafkaDispatcher<string, PaymentInitiatedEvent>(Serializers.Utf8, new JsonSerializer<PaymentInitiatedEvent>()))
             {
-                await dispatcher.SendAsync(QueueNames.GPay.InitiatePayment, transaction.Utr, transaction);
+                await dispatcher.SendAsync(QueueNames.GPay.InitiatePayment, payment.Utr, payment);
             }
         }
     }

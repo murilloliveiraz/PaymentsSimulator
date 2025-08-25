@@ -6,10 +6,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Core\EventBus\Events\" />
-  </ItemGroup>
-
 	<ItemGroup>
 		<PackageReference Include="Confluent.Kafka" Version="2.10.1" />
 		<PackageReference Include="MediatR" Version="12.2.0" />
