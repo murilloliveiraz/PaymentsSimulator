@@ -18,6 +18,7 @@
             public const string PaymentInitiated = "NPCI.payment.initiated";
             public const string DebitSuccess = "NPCI.payment.debit.success";
             public const string DebitFailed = "NPCI.payment.debit.failed";
+            public const string DebitDLQ = "NPCI.payment.debit.dlq";
             public const string CreditSuccess = "NPCI.payment.credit.success";
             public const string CreditFailed = "NPCI.payment.credit.failed";
         }

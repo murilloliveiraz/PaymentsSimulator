@@ -8,6 +8,6 @@
         public string ReceiverAccount { get; set; }
         public decimal Amount { get; set; }
         public string Status { get; set; }
-        public DateTime LastUpdated { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

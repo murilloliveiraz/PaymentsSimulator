@@ -1,6 +1,6 @@
 ﻿using Bank.Context;
 using Bank.DTOs;
-using Bank.Producers;
+using Bank.Producers.PaymentInititated;
 using BuildingBlocks.Core.DomainObjects;
 using BuildingBlocks.Core.EventBus.Events;
 using Microsoft.AspNetCore.Mvc;
@@ -48,7 +48,7 @@ namespace Bank.Controllers
                 ReceiverAccount = payment.ReceiverAccount,
                 Amount = payment.Amount,
                 LastUpdated = DateTime.UtcNow,
-                Status = "PaymentInitiated",
+                Status = PaymentStatuses.Initiated,
                 Utr = Guid.NewGuid().ToString()
             };
 
@@ -58,7 +58,7 @@ namespace Bank.Controllers
             if (!response)
                 return CustomResponse((int)HttpStatusCode.BadRequest, false);
 
-            var @event = new PaymentInitiatedEvent(newPayment.TransactionId, newPayment.Utr, newPayment.SenderAccount, newPayment.ReceiverAccount, newPayment.Amount, newPayment.Status, DateTime.Now);
+            var @event = new PaymentInitiatedEvent(newPayment.TransactionId, newPayment.Utr, newPayment.SenderAccount, newPayment.ReceiverAccount, newPayment.Amount, newPayment.Status, DateTime.UtcNow);
 
             await _producer.ProduceNewPayment(@event);
 

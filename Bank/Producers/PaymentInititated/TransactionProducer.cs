@@ -1,6 +1,6 @@
 ﻿using BuildingBlocks.Core.EventBus.Events;
 
-namespace Bank.Producers
+namespace Bank.Producers.PaymentInititated
 {
     public class TransactionProducer
     {

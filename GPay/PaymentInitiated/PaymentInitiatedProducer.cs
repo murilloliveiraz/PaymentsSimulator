@@ -1,28 +1,27 @@
-﻿using BuildingBlocks.Core.DomainObjects;
-using BuildingBlocks.Core.EventBus;
+﻿using BuildingBlocks.Core.EventBus;
 using BuildingBlocks.Core.EventBus.Dispatcher;
 using BuildingBlocks.Core.EventBus.Events;
-using BuildingBlocks.Core.Helpers;
-using Confluent.Kafka;
 
 namespace GPay
 {
     public class PaymentInitiatedProducer
     {
-        public async Task ProcessPaymentNPCI(PaymentInitiatedEvent transaction)
+        private readonly KafkaDispatcher<string, PaymentInitiatedEvent> _debitDispatcher;
+        private readonly KafkaDispatcher<string, PaymentFailedEvent> _failedDispatcher;
+
+        public PaymentInitiatedProducer(
+            KafkaDispatcher<string, PaymentInitiatedEvent> debitDispatcher,
+            KafkaDispatcher<string, PaymentFailedEvent> failedDispatcher
+            )
         {
-            using (var dispatcher = new KafkaDispatcher<string, PaymentInitiatedEvent>(Serializers.Utf8, new JsonSerializer<PaymentInitiatedEvent>()))
-            {
-                await dispatcher.SendAsync(QueueNames.NPCI.DebitRequest, transaction.Utr, transaction);
-            }
+            _debitDispatcher = debitDispatcher;
+            _failedDispatcher = failedDispatcher;
         }
 
-        public async Task ProducePaymentFailed(PaymentInitiatedEvent transaction)
-        {
-            using (var dispatcher = new KafkaDispatcher<string, PaymentInitiatedEvent>(Serializers.Utf8, new JsonSerializer<PaymentInitiatedEvent>()))
-            {
-                await dispatcher.SendAsync(QueueNames.GPay.PaymentFailed, transaction.Utr, transaction);
-            }
-        }
+        public Task ProcessDebitRequestNPCI(PaymentInitiatedEvent transaction) =>
+            _debitDispatcher.SendAsync(QueueNames.NPCI.DebitRequest, transaction.Utr, transaction);
+
+        public Task ProducePaymentFailed(PaymentFailedEvent transaction) =>
+            _failedDispatcher.SendAsync(QueueNames.GPay.PaymentFailed, transaction.Utr, transaction);
     }
 }

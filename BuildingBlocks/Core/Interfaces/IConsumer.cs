@@ -2,6 +2,6 @@
 {
     public interface IConsumerFunction<TKey, TValue>
     {
-        void Consume(ConsumeResult<TKey, TValue> record);
+        Task Consume(ConsumeResult<TKey, TValue> record);
     }
 }

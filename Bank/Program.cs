@@ -1,5 +1,5 @@
-using Bank;
 using Bank.Context;
+using Bank.Setup;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

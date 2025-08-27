@@ -1,7 +1,7 @@
 ﻿using Bank.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Bank
+namespace Bank.Setup
 {
     public static class ApiConfig
     {
