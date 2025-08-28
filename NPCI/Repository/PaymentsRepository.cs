@@ -1,11 +1,13 @@
 ﻿using Bank.Context;
+using Confluent.Kafka;
 using Microsoft.EntityFrameworkCore;
 using NPCI.Models;
+using NPCI.Repository.Interfaces;
 using System;
 
 namespace NPCI.Repository
 {
-    public class PaymentsRepository
+    public class PaymentsRepository: IPaymentsRepository
     {
         protected readonly NFCIContext db;
 
@@ -23,7 +25,7 @@ namespace NPCI.Repository
             return payment;
         }
 
-        public async Task<PaymentSaga> GetMemberById(string utr)
+        public async Task<PaymentSaga> GetPaymentByUtr(string utr)
         {
             var payment = await db.Payments.FirstOrDefaultAsync(pay => pay.Utr == utr);
             if (payment is null)
@@ -32,12 +34,15 @@ namespace NPCI.Repository
 
         }
 
-        public void UpdatePayment(PaymentSaga payment)
+        public async Task<PaymentSaga> UpdateStatus(string utr, string status)
         {
+            var payment = await db.Payments.FirstOrDefaultAsync(pay => pay.Utr == utr);
             if (payment is null)
-                throw new ArgumentNullException(nameof(payment));
+                throw new InvalidOperationException("message not found");
 
-            db.Payments.Update(payment);
+            payment.Status = status;
+            await db.SaveChangesAsync();
+            return payment;
         }
     }
 }

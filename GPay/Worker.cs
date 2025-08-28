@@ -1,29 +1,23 @@
-using GPay.PaymentInitiated;
+using BuildingBlocks.Core.EventBus.Dispatcher;
+using BuildingBlocks.Core.EventBus.Events;
+using BuildingBlocks.Core.EventBus;
 
 namespace GPay
 {
     public class Worker : BackgroundService
     {
-        private readonly ILogger<Worker> _logger;
-        private readonly PaymentInitiatedConsumer _paymentInitiatedConsumer;
+        private readonly IEventBus _eventBus;
 
-        public Worker(ILogger<Worker> logger, PaymentInitiatedConsumer paymentInitiatedConsumer)
+        public Worker(IEventBus eventBus)
         {
-            _logger = logger;
-            _paymentInitiatedConsumer = paymentInitiatedConsumer;
+            _eventBus = eventBus;
         }
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                var tasks = new List<Task>
-                {
-                    _paymentInitiatedConsumer.Start(stoppingToken)
-                };
+            _eventBus.Subscribe<PaymentInitiatedEvent, PaymentInitiatedHandler>(QueueNames.GPay.InitiatePayment);
 
-                await Task.WhenAll(tasks);
-            }
+            return Task.CompletedTask;
         }
     }
 }

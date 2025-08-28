@@ -1,24 +1,24 @@
+using BuildingBlocks.Core.EventBus.Dispatcher;
+using BuildingBlocks.Core.EventBus.Events;
+using BuildingBlocks.Core.EventBus;
+using NFCI.Handlers;
+
 namespace NPCI
 {
     public class Worker : BackgroundService
     {
-        private readonly ILogger<Worker> _logger;
+        private readonly IEventBus _eventBus;
 
-        public Worker(ILogger<Worker> logger)
+        public Worker(IEventBus eventBus)
         {
-            _logger = logger;
+            _eventBus = eventBus;
         }
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                if (_logger.IsEnabled(LogLevel.Information))
-                {
-                    _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                }
-                await Task.Delay(1000, stoppingToken);
-            }
+            _eventBus.Subscribe<PaymentInitiatedEvent, PaymentInitiatedHandler>(QueueNames.NPCI.PaymentInitiated);
+
+            return Task.CompletedTask;
         }
     }
 }

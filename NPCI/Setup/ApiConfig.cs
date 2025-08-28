@@ -1,14 +1,14 @@
 ﻿using Bank.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Bank.Setup
+namespace NPCI.Setup
 {
     public static class ApiConfig
     {
         public static IServiceCollection AddApiConfig(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<BankContext>(options =>
-                options.UseSqlite(@"Data Source=bank.db"));
+            services.AddDbContext<NFCIContext>(options =>
+                options.UseSqlite(@"Data Source=nfci.db"));
 
             return services;
         }
@@ -17,7 +17,7 @@ namespace Bank.Setup
         {
             using (var scope = serviceProvider.CreateScope())
             {
-                var context = scope.ServiceProvider.GetRequiredService<BankContext>();
+                var context = scope.ServiceProvider.GetRequiredService<NFCIContext>();
 
                 context.Database.EnsureCreated();
             }

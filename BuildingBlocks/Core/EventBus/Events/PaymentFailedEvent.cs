@@ -7,5 +7,7 @@
         string ReceiverAccount,
         decimal Amount,
         string Status,
-        DateTime TransactionDate);
+        DateTime TransactionDate,
+        string Reason
+        );
 }

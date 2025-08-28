@@ -1,11 +1,9 @@
 ﻿using Bank.Context;
 using Bank.DTOs;
-using Bank.Producers.PaymentInititated;
-using BuildingBlocks.Core.DomainObjects;
 using BuildingBlocks.Core.EventBus.Events;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using BuildingBlocks.Core.Interfaces;
 using System.Net;
+using System.Text.Json;
 
 namespace Bank.Controllers
 {
@@ -14,12 +12,12 @@ namespace Bank.Controllers
     public class PaymentsController : ApiController
     {
         private readonly BankContext _context;
-        private readonly TransactionProducer _producer;
+        private readonly IOutboxRepository _outboxRepository;
 
-        public PaymentsController(BankContext context, TransactionProducer producer)
+        public PaymentsController(BankContext context, IOutboxRepository outboxRepository)
         {
             _context = context;
-            _producer = producer;
+            _outboxRepository = outboxRepository;
         }
 
         [HttpGet("{utr}")]
@@ -47,7 +45,7 @@ namespace Bank.Controllers
                 SenderAccount = payment.SenderAccount,
                 ReceiverAccount = payment.ReceiverAccount,
                 Amount = payment.Amount,
-                LastUpdated = DateTime.UtcNow,
+                CreatedAt = DateTime.UtcNow,
                 Status = PaymentStatuses.Initiated,
                 Utr = Guid.NewGuid().ToString()
             };
@@ -59,8 +57,18 @@ namespace Bank.Controllers
                 return CustomResponse((int)HttpStatusCode.BadRequest, false);
 
             var @event = new PaymentInitiatedEvent(newPayment.TransactionId, newPayment.Utr, newPayment.SenderAccount, newPayment.ReceiverAccount, newPayment.Amount, newPayment.Status, DateTime.UtcNow);
+            
+            var outboxEvent = new OutboxMessage
+            {
+                CorrelationId = @event.Utr,
+                Topic = QueueNames.NPCI.PaymentInitiated,
+                EventType = nameof(PaymentInitiatedEvent),
+                Payload = JsonSerializer.Serialize(@event),
+                Status = OutboxStatus.Pending,
+                CreatedAt = DateTime.UtcNow
+            };
 
-            await _producer.ProduceNewPayment(@event);
+            await _outboxRepository.AddAsync(outboxEvent);
 
             return CustomResponse((int)HttpStatusCode.OK, true, newPayment);
         }

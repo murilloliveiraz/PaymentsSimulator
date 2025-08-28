@@ -17,20 +17,11 @@
             public const string PaymentSuccess = "NPCI.payment.success";
             public const string PaymentInitiated = "NPCI.payment.initiated";
             public const string DebitSuccess = "NPCI.payment.debit.success";
-            public const string DebitFailed = "NPCI.payment.debit.failed";
-            public const string DebitDLQ = "NPCI.payment.debit.dlq";
             public const string CreditSuccess = "NPCI.payment.credit.success";
-            public const string CreditFailed = "NPCI.payment.credit.failed";
         }
 
         public static class Bank
         {
-            public const string DebitSuccess = "Bank.payment.debit.success";
-            public const string DebitFailed = "Bank.payment.debit.failed";
-            public const string CreditSuccess = "Bank.payment.credit.success";
-            public const string CreditFailed = "Bank.payment.credit.failed";
-            public const string RefundSuccess = "Bank.payment.refund.success";
-            public const string RefundFailed = "Bank.payment.refund.failed";
             public const string DebitRequest = "Bank.payment.debit.request";
             public const string CreditRequest = "Bank.payment.credit.request";
             public const string RefundRequest = "Bank.payment.refund.request";
@@ -40,7 +31,6 @@
         {
             public const string RefundRequest = "Refund.refund.request";
             public const string PaymentFailed = "Refund.payment.failed";
-            public const string RefundFailed = "Refund.refund.failed";
         }
     }
 }

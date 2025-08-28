@@ -1,15 +1,13 @@
 ﻿using Bank.Context;
-using BuildingBlocks.Core.DomainObjects;
 using BuildingBlocks.Core.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace NPCI.Repository
 {
     public class OutboxRepository: IOutboxRepository
     {
-        protected readonly NFCIContext db;
+        protected readonly BankContext db;
 
-        public OutboxRepository(NFCIContext _db)
+        public OutboxRepository(BankContext _db)
         {
             db = _db;
         }
