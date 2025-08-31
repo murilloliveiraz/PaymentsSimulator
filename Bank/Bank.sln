@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPay", "..\GPay\GPay.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPCI", "..\NPCI\NPCI.csproj", "{C38825E0-FD38-486F-ABAD-796A254DAAAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refunder", "..\Refunder\Refunder.csproj", "{FFCC2189-020D-42C4-A824-B27E6167ACA5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{C38825E0-FD38-486F-ABAD-796A254DAAAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C38825E0-FD38-486F-ABAD-796A254DAAAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C38825E0-FD38-486F-ABAD-796A254DAAAB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FFCC2189-020D-42C4-A824-B27E6167ACA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FFCC2189-020D-42C4-A824-B27E6167ACA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FFCC2189-020D-42C4-A824-B27E6167ACA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FFCC2189-020D-42C4-A824-B27E6167ACA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,8 @@
-﻿using BuildingBlocks.Core.EventBus;
+﻿using BuildingBlocks.Core.DomainObjects;
+using BuildingBlocks.Core.EventBus;
 using BuildingBlocks.Core.EventBus.Dispatcher;
 using BuildingBlocks.Core.EventBus.Events;
-using NPCI.Models;
+using BuildingBlocks.Core.Interfaces;
 using NPCI.Repository;
 using System.Text.Json;
 
@@ -10,10 +11,10 @@ namespace NFCI.Handlers
     public class PaymentInitiatedHandler : IEventHandler<PaymentInitiatedEvent>
     {
         private readonly ILogger<PaymentInitiatedEvent> _logger;
-        private readonly PaymentsRepository _paymentRepository;
-        private readonly OutboxRepository _outboxRepository;
+        private readonly IPaymentsRepository _paymentRepository;
+        private readonly IOutboxRepository _outboxRepository;
 
-        public PaymentInitiatedHandler(ILogger<PaymentInitiatedEvent> logger, PaymentsRepository paymentRepository, OutboxRepository outboxRepository)
+        public PaymentInitiatedHandler(ILogger<PaymentInitiatedEvent> logger, IPaymentsRepository paymentRepository, IOutboxRepository outboxRepository)
         {
             _logger = logger;
             _paymentRepository = paymentRepository;
@@ -34,7 +35,7 @@ namespace NFCI.Handlers
                 DateTime.UtcNow
             );
 
-            await _paymentRepository.AddAsync(new PaymentSaga
+            await _paymentRepository.AddAsync(new Transaction
             {
                 TransactionId = @event.TransactionId,
                 Utr = @event.Utr,

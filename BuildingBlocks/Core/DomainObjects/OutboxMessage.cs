@@ -1,9 +1,11 @@
-﻿namespace BuildingBlocks.Core.DomainObjects
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BuildingBlocks.Core.DomainObjects
 {
     public class OutboxMessage
     {
+        [Key]
         public string MessageId { get; set; } = Guid.NewGuid().ToString();
-        public string TransactionId { get; set; }
         public string EventType { get; set; }
         public string Topic { get; set; }
         public string Payload { get; set; }

@@ -13,11 +13,13 @@ namespace GPay
             _eventBus = eventBus;
         }
 
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             _eventBus.Subscribe<PaymentInitiatedEvent, PaymentInitiatedHandler>(QueueNames.GPay.InitiatePayment);
+            _eventBus.Subscribe<PaymentSuccessEvent, PaymentSuccessHandler>(QueueNames.GPay.PaymentSuccess);
+            _eventBus.Subscribe<PaymentFailedEvent, PaymentFailedHandler>(QueueNames.GPay.PaymentFailed);
 
-            return Task.CompletedTask;
+            await Task.Delay(-1, stoppingToken);
         }
     }
 }

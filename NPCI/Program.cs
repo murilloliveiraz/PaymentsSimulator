@@ -8,6 +8,10 @@ builder.Services.AddHostedService<Worker>();
 builder.Services.AddHostedService<OutboxWorker>();
 
 builder.Services.AddApiConfig(builder.Configuration);
+builder.Services.AddDependencyInjection();
 
 var host = builder.Build();
+
+host.Services.EnsureDatabaseCreated();
+
 host.Run();

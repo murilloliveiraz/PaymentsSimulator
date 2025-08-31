@@ -1,9 +1,7 @@
 ﻿using Bank.Context;
-using Confluent.Kafka;
+using BuildingBlocks.Core.DomainObjects;
+using BuildingBlocks.Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using NPCI.Models;
-using NPCI.Repository.Interfaces;
-using System;
 
 namespace NPCI.Repository
 {
@@ -16,7 +14,7 @@ namespace NPCI.Repository
             db = _db;
         }
 
-        public async Task<PaymentSaga> AddAsync(PaymentSaga payment)
+        public async Task<Transaction> AddAsync(Transaction payment)
         {
             if (payment is null)
                 throw new ArgumentNullException(nameof(payment));
@@ -25,7 +23,7 @@ namespace NPCI.Repository
             return payment;
         }
 
-        public async Task<PaymentSaga> GetPaymentByUtr(string utr)
+        public async Task<Transaction> GetPaymentByUtr(string utr)
         {
             var payment = await db.Payments.FirstOrDefaultAsync(pay => pay.Utr == utr);
             if (payment is null)
@@ -34,7 +32,7 @@ namespace NPCI.Repository
 
         }
 
-        public async Task<PaymentSaga> UpdateStatus(string utr, string status)
+        public async Task<Transaction> UpdateStatus(string utr, string status)
         {
             var payment = await db.Payments.FirstOrDefaultAsync(pay => pay.Utr == utr);
             if (payment is null)

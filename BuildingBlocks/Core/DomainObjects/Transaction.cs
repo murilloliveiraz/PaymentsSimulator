@@ -1,8 +1,12 @@
-﻿namespace BuildingBlocks.Core.DomainObjects
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BuildingBlocks.Core.DomainObjects
 {
     public class Transaction
     {
-        public string TransactionId { get; set; }
+        [Key]
+        public int TransactionId { get; set; }
         public string Utr { get; set; }
         public string SenderAccount { get; set; }
         public string ReceiverAccount { get; set; }

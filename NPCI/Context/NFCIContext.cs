@@ -1,6 +1,5 @@
 ﻿using BuildingBlocks.Core.DomainObjects;
 using Microsoft.EntityFrameworkCore;
-using NPCI.Models;
 
 namespace Bank.Context
 {
@@ -11,7 +10,7 @@ namespace Bank.Context
         {
         }
 
-        public DbSet<PaymentSaga> Payments { get; set; }
+        public DbSet<Transaction> Payments { get; set; }
         public DbSet<OutboxMessage> Outbox { get; set; }
     }
 }

@@ -13,17 +13,20 @@ namespace Bank.Controllers
     {
         private readonly BankContext _context;
         private readonly IOutboxRepository _outboxRepository;
+        private readonly IPaymentsRepository _paymentsRepository;
 
-        public PaymentsController(BankContext context, IOutboxRepository outboxRepository)
+        public PaymentsController(BankContext context, IOutboxRepository outboxRepository, IPaymentsRepository paymentsRepository)
         {
             _context = context;
             _outboxRepository = outboxRepository;
+            _paymentsRepository = paymentsRepository;
         }
 
         [HttpGet("{utr}")]
         public async Task<ActionResult> GetTransaction([FromRoute] string utr)
         {
-            var payment = await _context.Transactions.FirstOrDefaultAsync(pay => pay.Utr == utr);
+            var payment = await _paymentsRepository.GetPaymentByUtr(utr);
+
             if (payment is null)
                 return CustomResponse((int)HttpStatusCode.NotFound, false);
 
@@ -50,18 +53,17 @@ namespace Bank.Controllers
                 Utr = Guid.NewGuid().ToString()
             };
 
-            await _context.Transactions.AddAsync(newPayment);
-            var response = await _context.SaveChangesAsync() > 0;
+            var response = await _paymentsRepository.AddAsync(newPayment);
 
-            if (!response)
+            if (response is null)
                 return CustomResponse((int)HttpStatusCode.BadRequest, false);
 
-            var @event = new PaymentInitiatedEvent(newPayment.TransactionId, newPayment.Utr, newPayment.SenderAccount, newPayment.ReceiverAccount, newPayment.Amount, newPayment.Status, DateTime.UtcNow);
+            var @event = new PaymentInitiatedEvent(response.TransactionId, response.Utr, response.SenderAccount, response.ReceiverAccount, response.Amount, response.Status, DateTime.UtcNow);
             
             var outboxEvent = new OutboxMessage
             {
                 CorrelationId = @event.Utr,
-                Topic = QueueNames.NPCI.PaymentInitiated,
+                Topic = QueueNames.GPay.InitiatePayment,
                 EventType = nameof(PaymentInitiatedEvent),
                 Payload = JsonSerializer.Serialize(@event),
                 Status = OutboxStatus.Pending,
@@ -70,7 +72,7 @@ namespace Bank.Controllers
 
             await _outboxRepository.AddAsync(outboxEvent);
 
-            return CustomResponse((int)HttpStatusCode.OK, true, newPayment);
+            return CustomResponse((int)HttpStatusCode.OK, true, response);
         }
     }
 }

@@ -1,6 +1,5 @@
-using Bank.Context;
 using Bank.Setup;
-using Microsoft.EntityFrameworkCore;
+using Bank.Workers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +10,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApiConfig(builder.Configuration);
+builder.Services.AddDependencyInjection();
+builder.Services.AddHostedService<OutboxWorker>();
+builder.Services.AddHostedService<RefundWorker>();
+builder.Services.AddHostedService<EventConsumerWorker>();
+
 
 var app = builder.Build();
 

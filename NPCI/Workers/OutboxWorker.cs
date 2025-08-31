@@ -1,22 +1,17 @@
 ﻿using BuildingBlocks.Core.EventBus.Dispatcher;
 using BuildingBlocks.Core.Interfaces;
-using NPCI.Repository.Interfaces;
 
 namespace NPCI.Workers
 {
     class OutboxWorker : BackgroundService
     {
-        private readonly IOutboxRepository _outboxRepo;
-        private readonly IPaymentsRepository _paymentRepository;
-        private readonly IEventBusProducer<object> _eventBus;
         private readonly ILogger<OutboxWorker> _logger;
+        private readonly IServiceScopeFactory _scopeFactory;
 
-        public OutboxWorker(IOutboxRepository outboxRepo, ILogger<OutboxWorker> logger, IEventBusProducer<object> eventBus, IPaymentsRepository paymentRepository)
+        public OutboxWorker(ILogger<OutboxWorker> logger, IServiceScopeFactory scopeFactory)
         {
-            _outboxRepo = outboxRepo;
             _logger = logger;
-            _eventBus = eventBus;
-            _paymentRepository = paymentRepository;
+            _scopeFactory = scopeFactory;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -27,16 +22,22 @@ namespace NPCI.Workers
             {
                 try
                 {
-                    var pending = await _outboxRepo.GetPendingMessages();
+                    using var scope = _scopeFactory.CreateScope();
+
+                    var outboxRepository = scope.ServiceProvider.GetRequiredService<IOutboxRepository>();
+                    var paymentRepository = scope.ServiceProvider.GetRequiredService<IPaymentsRepository>();
+                    var producer = scope.ServiceProvider.GetRequiredService<IEventBusProducer<string>>();
+
+                    var pending = await outboxRepository.GetPendingMessages();
 
                     foreach (var message in pending)
                     {
                         try
                         {
-                            await _eventBus.PublishAsync(message.Topic, message.CorrelationId, message.Payload, stoppingToken);
+                            await producer.PublishAsync(message.Topic, message.CorrelationId, message.Payload, stoppingToken);
 
-                            await _outboxRepo.MarkAsPublishedAsync(message.MessageId);
-                            await _paymentRepository.UpdateStatus(message.CorrelationId, message.EventType);
+                            await outboxRepository.MarkAsPublishedAsync(message.MessageId);
+                            await paymentRepository.UpdateStatus(message.CorrelationId, message.EventType);
                         }
                         catch (Exception ex)    
                         {
@@ -45,7 +46,7 @@ namespace NPCI.Workers
                     }
 
                     // Delay antes de nova iteração
-                    await Task.Delay(1000, stoppingToken);
+                    await Task.Delay(10000, stoppingToken);
                 }
                 catch (OperationCanceledException)
                 {

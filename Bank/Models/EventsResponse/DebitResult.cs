@@ -2,7 +2,7 @@
 {
     public class DebitResult
     {
-        public string TransactionId { get; }
+        public int TransactionId { get; }
         public string Utr { get; }
         public string SenderAccount { get; }
         public string ReceiverAccount { get; }
@@ -12,7 +12,7 @@
         public bool IsSuccess => Status == PaymentStatuses.DebitSuccess;
 
         private DebitResult(
-            string transactionId,
+            int transactionId,
             string utr,
             string senderAccount,
             string receiverAccount,
@@ -30,7 +30,7 @@
         }
 
         public static DebitResult Success(
-            string transactionId,
+            int transactionId,
             string utr,
             string senderAccount,
             string receiverAccount,
@@ -38,7 +38,7 @@
             new(transactionId, utr, senderAccount, receiverAccount, amount, PaymentStatuses.DebitSuccess);
 
         public static DebitResult Failed(
-            string transactionId,
+            int transactionId,
             string utr,
             string senderAccount,
             string receiverAccount,

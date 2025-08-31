@@ -2,11 +2,12 @@
 
 namespace BuildingBlocks.Core.EventBus.Dispatcher;
 
-public class KafkaEventBus : IEventBus, IEventBusProducer<object>, IDisposable
+public class KafkaEventBus : IEventBus, IEventBusProducer<string>, IDisposable
 {
     private readonly IProducer<string, string> _producer;
     private readonly IConsumer<string, string> _consumer;
     private readonly IServiceProvider _serviceProvider;
+    private static readonly JsonSerializerOptions _jsonOptions = new(JsonSerializerDefaults.Web);
 
     public KafkaEventBus(IServiceProvider serviceProvider)
     {
@@ -20,44 +21,52 @@ public class KafkaEventBus : IEventBus, IEventBusProducer<object>, IDisposable
         _consumer = new ConsumerBuilder<string, string>(new ConsumerConfig
         {
             BootstrapServers = "127.0.0.1:9092",
-            GroupId = "default-consumer",
+            GroupId = $"default-consumer-{Guid.NewGuid()}",
             AutoOffsetReset = AutoOffsetReset.Earliest,
             EnableAutoCommit = false
         }).Build();
     }
 
-    public async Task PublishAsync(string topic, string key, object @event, CancellationToken cancellationToken = default)
+    public async Task PublishAsync(string topic, string key, string rawPayload, CancellationToken cancellationToken = default)
     {
-        var payload = JsonSerializer.Serialize(@event);
-        await _producer.ProduceAsync(topic, new Message<string, string> { Key = key, Value = payload }, cancellationToken);
+        await _producer.ProduceAsync(topic, new Message<string, string> { Key = key, Value = rawPayload }, cancellationToken);
     }
 
     public void Subscribe<TEvent, THandler>(string topic)
-        where TEvent : class
-        where THandler : IEventHandler<TEvent>
+    where TEvent : class
+    where THandler : IEventHandler<TEvent>
     {
-        _consumer.Subscribe(topic);
-
-        Task.Run(async () =>
+        Task.Run(() =>
         {
+            var consumer = new ConsumerBuilder<string, string>(new ConsumerConfig
+            {
+                BootstrapServers = "127.0.0.1:9092",
+                GroupId = $"consumer-{typeof(TEvent).Name}-{Guid.NewGuid()}",
+                AutoOffsetReset = AutoOffsetReset.Earliest,
+                EnableAutoCommit = false
+            }).Build();
+
+            consumer.Subscribe(topic);
+
+            Console.WriteLine($"[KafkaEventBus] Subscribed to topic {topic} for event {typeof(TEvent).Name}");
+
             while (true)
             {
                 try
                 {
-                    var result = _consumer.Consume();
+                    var result = consumer.Consume();
 
-                    var message = JsonSerializer.Deserialize<TEvent>(result.Message.Value);
+                    var message = JsonSerializer.Deserialize<TEvent>(result.Message.Value, _jsonOptions);
 
                     using var scope = _serviceProvider.CreateScope();
                     var handler = scope.ServiceProvider.GetRequiredService<THandler>();
 
-                    await ExecuteWithRetry(
-                        async () => await handler.HandleAsync(message!, default),
-                        result, topic);
+                    handler.HandleAsync(message!, CancellationToken.None).Wait(); // or make it async
+                    consumer.Commit(result);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"[EventBus] Erro inesperado: {ex.Message}");
+                    Console.WriteLine($"[EventBus] Error while consuming from {topic}: {ex.Message}");
                 }
             }
         });

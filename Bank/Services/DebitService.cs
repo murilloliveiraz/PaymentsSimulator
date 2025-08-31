@@ -1,21 +1,24 @@
 ﻿using Bank.Context;
 using Bank.Models.EventsResponse;
 using BuildingBlocks.Core.EventBus.Events;
+using BuildingBlocks.Core.Interfaces;
 
 namespace Bank.Services
 {
     public class DebitService
     {
         private readonly BankContext _context;
+        private readonly IPaymentsRepository _paymentsRepository;
 
-        public DebitService(BankContext context)
+        public DebitService(IPaymentsRepository paymentsRepository, BankContext context)
         {
+            _paymentsRepository = paymentsRepository;
             _context = context;
         }
 
         public async Task<DebitResult> HandleDebitRequest(DebitRequestEvent tx)
         {
-            var payment = await _context.Transactions.FirstOrDefaultAsync(x => x.Utr == tx.Utr);
+            var payment = await _paymentsRepository.GetPaymentByUtr(tx.Utr);
             if (payment == null || tx.Amount <= 0)
             {
                 return DebitResult.Failed(tx.TransactionId, tx.Utr, tx.SenderAccount, tx.ReceiverAccount, tx.Amount, "Pagamento inexistente ou valor inválido");

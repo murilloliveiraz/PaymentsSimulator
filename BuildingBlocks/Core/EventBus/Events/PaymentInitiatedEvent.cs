@@ -1,7 +1,7 @@
 ﻿namespace BuildingBlocks.Core.EventBus.Events
 {
     public record PaymentInitiatedEvent(
-        string TransactionId,
+        int TransactionId,
         string Utr,
         string SenderAccount,
         string ReceiverAccount,

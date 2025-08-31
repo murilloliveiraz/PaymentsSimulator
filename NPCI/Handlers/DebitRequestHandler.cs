@@ -1,8 +1,8 @@
-﻿using BuildingBlocks.Core.EventBus;
+﻿using BuildingBlocks.Core.DomainObjects;
+using BuildingBlocks.Core.EventBus;
 using BuildingBlocks.Core.EventBus.Dispatcher;
 using BuildingBlocks.Core.EventBus.Events;
-using Microsoft.Extensions.Logging;
-using NPCI.Models;
+using BuildingBlocks.Core.Interfaces;
 using NPCI.Repository;
 using System.Text.Json;
 
@@ -11,11 +11,11 @@ namespace NFCI.Handlers
     public class DebitRequestHandler : IEventHandler<DebitRequestEvent>
     {
         private readonly ILogger<DebitRequestEvent> _logger;
-        private readonly PaymentsRepository _paymentRepository;
-        private readonly OutboxRepository _outboxRepository;
+        private readonly IPaymentsRepository _paymentRepository;
+        private readonly IOutboxRepository _outboxRepository;
         const int MAX_RETRIES = 3;
 
-        public DebitRequestHandler(ILogger<DebitRequestEvent> logger, PaymentsRepository paymentRepository, OutboxRepository outboxRepository)
+        public DebitRequestHandler(ILogger<DebitRequestEvent> logger, IPaymentsRepository paymentRepository, IOutboxRepository outboxRepository)
         {
             _logger = logger;
             _paymentRepository = paymentRepository;

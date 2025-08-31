@@ -1,14 +1,15 @@
 ﻿using BuildingBlocks.Core.EventBus;
 using BuildingBlocks.Core.EventBus.Dispatcher;
 using BuildingBlocks.Core.EventBus.Events;
+using System.Text.Json;
 namespace GPay
 {
     public class PaymentInitiatedHandler : IEventHandler<PaymentInitiatedEvent>
     {
-        private readonly IEventBusProducer<object> _eventBus;
+        private readonly IEventBusProducer<string> _eventBus;
         private readonly ILogger<PaymentInitiatedHandler> _logger;
 
-        public PaymentInitiatedHandler(ILogger<PaymentInitiatedHandler> logger, IEventBusProducer<object> eventBus)
+        public PaymentInitiatedHandler(ILogger<PaymentInitiatedHandler> logger, IEventBusProducer<string> eventBus)
         {
             _logger = logger;
             _eventBus = eventBus;
@@ -16,12 +17,13 @@ namespace GPay
 
         public async Task HandleAsync(PaymentInitiatedEvent @event, CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Processing PaymentInitiatedEvent [TransactionId={TransactionId}, UTR={UTR}]",
+            _logger.LogInformation("[GPay] Processing PaymentInitiatedEvent [TransactionId={TransactionId}, UTR={UTR}]",
                 @event.TransactionId, @event.Utr);
 
             if (@event.Amount > 0)
             {
-                await _eventBus.PublishAsync(QueueNames.NPCI.DebitRequest, @event.Utr, @event, cancellationToken);
+                var payload = JsonSerializer.Serialize(@event);
+                await _eventBus.PublishAsync(QueueNames.NPCI.PaymentInitiated, @event.Utr, payload, cancellationToken);
             }
             else
             {
@@ -30,7 +32,9 @@ namespace GPay
                     @event.SenderAccount, @event.ReceiverAccount,
                     @event.Amount, PaymentStatuses.PaymentFailed, DateTime.UtcNow, "Amount cannot be negative");
 
-                await _eventBus.PublishAsync(QueueNames.GPay.PaymentFailed, @event.Utr, failed, cancellationToken);
+                var payload = JsonSerializer.Serialize(failed);
+
+                await _eventBus.PublishAsync(QueueNames.GPay.PaymentFailed, @event.Utr, payload, cancellationToken);
             }
         }
     }

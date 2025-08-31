@@ -1,7 +1,7 @@
 ﻿using Bank.Context;
 using BuildingBlocks.Core.Interfaces;
 
-namespace NPCI.Repository
+namespace Bank.Repository
 {
     public class OutboxRepository: IOutboxRepository
     {

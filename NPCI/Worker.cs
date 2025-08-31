@@ -14,11 +14,18 @@ namespace NPCI
             _eventBus = eventBus;
         }
 
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            _eventBus.Subscribe<CreditRequestEvent, CreditRequestHandler>(QueueNames.NPCI.CreditRequest);
+            _eventBus.Subscribe<CreditSuccessEvent, CreditSuccessHandler>(QueueNames.NPCI.CreditSuccess);
+            _eventBus.Subscribe<DebitRequestEvent, DebitRequestHandler>(QueueNames.NPCI.DebitRequest);
+            _eventBus.Subscribe<DebitSuccessEvent, DebitSuccessHandler>(QueueNames.NPCI.DebitSuccess);
+            _eventBus.Subscribe<PaymentFailedEvent, PaymentFailedHandler>(QueueNames.NPCI.PaymentFailed);
             _eventBus.Subscribe<PaymentInitiatedEvent, PaymentInitiatedHandler>(QueueNames.NPCI.PaymentInitiated);
+            _eventBus.Subscribe<PaymentSuccessEvent, PaymentSuccessHandler>(QueueNames.NPCI.PaymentSuccess);
+            _eventBus.Subscribe<PaymentSuccessEvent, PaymentSuccessRetryHandler>(QueueNames.NPCI.PaymentSuccessRetry);
 
-            return Task.CompletedTask;
+            await Task.Delay(-1, stoppingToken);
         }
     }
 }
